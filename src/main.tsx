@@ -79,8 +79,6 @@ const router = createRouter({
   context: { queryClient },
   defaultPreload: 'intent',
   defaultPreloadStaleTime: 0,
-  // vite base('/dashboard/') 와 일치 — 서브패스 서빙 시 라우트 해석 보정.
-  basepath: '/dashboard',
 })
 
 // Register the router instance for type safety
