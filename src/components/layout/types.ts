@@ -1,4 +1,5 @@
 import { type LinkProps } from '@tanstack/react-router'
+import { type TranslationKey } from '@/lib/i18n'
 
 type User = {
   name: string
@@ -14,6 +15,7 @@ type Team = {
 
 type BaseNavItem = {
   title: string
+  titleKey?: TranslationKey
   badge?: string
   icon?: React.ElementType
 }
@@ -32,6 +34,7 @@ type NavItem = NavCollapsible | NavLink
 
 type NavGroup = {
   title: string
+  titleKey?: TranslationKey
   items: NavItem[]
 }
 

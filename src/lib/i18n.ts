@@ -1,0 +1,145 @@
+export type Language = 'ko' | 'en' | 'vi'
+
+export interface LanguageOption {
+  code: Language
+  label: string
+  nativeName: string
+  flag: string
+}
+
+export const LANGUAGES: LanguageOption[] = [
+  { code: 'ko', label: '한국어', nativeName: '한국어', flag: '🇰🇷' },
+  { code: 'en', label: 'English', nativeName: 'English', flag: '🇺🇸' },
+  { code: 'vi', label: 'Tiếng Việt', nativeName: 'Tiếng Việt', flag: '🇻🇳' },
+]
+
+export const translations = {
+  ko: {
+    // Nav groups
+    general: '일반',
+    pages: '페이지',
+    other: '기타',
+    // Menu items
+    dashboard: '대시보드',
+    tasks: '업무 관리',
+    chats: '채팅',
+    users: '회원 관리',
+    auth: '인증',
+    signIn: '로그인',
+    signIn2Col: '로그인 (2단 분할)',
+    signUp: '회원가입',
+    forgotPassword: '비밀번호 찾기',
+    otp: 'OTP 인증',
+    errors: '오류 페이지',
+    unauthorized: '인증 필요 (401)',
+    forbidden: '접근 제한 (403)',
+    notFound: '페이지 없음 (404)',
+    internalServerError: '서버 오류 (500)',
+    maintenanceError: '유지보수 중',
+    settings: '설정',
+    profile: '프로필',
+    account: '계정',
+    appearance: '테마/디자인',
+    notifications: '알림',
+    display: '화면 표시',
+    helpCenter: '고객센터',
+    // UI Header & Common
+    language: '언어',
+    selectLanguage: '언어 선택',
+    search: '검색...',
+    download: '다운로드',
+    overview: '개요',
+    analytics: '분석',
+    reports: '보고서',
+    totalRevenue: '총 매출',
+    subscriptions: '구독 수',
+    sales: '판매량',
+    activeNow: '현재 활성 사용자',
+  },
+  en: {
+    // Nav groups
+    general: 'General',
+    pages: 'Pages',
+    other: 'Other',
+    // Menu items
+    dashboard: 'Dashboard',
+    tasks: 'Tasks',
+    chats: 'Chats',
+    users: 'Users',
+    auth: 'Auth',
+    signIn: 'Sign In',
+    signIn2Col: 'Sign In (2 Col)',
+    signUp: 'Sign Up',
+    forgotPassword: 'Forgot Password',
+    otp: 'OTP',
+    errors: 'Errors',
+    unauthorized: 'Unauthorized',
+    forbidden: 'Forbidden',
+    notFound: 'Not Found',
+    internalServerError: 'Internal Server Error',
+    maintenanceError: 'Maintenance Error',
+    settings: 'Settings',
+    profile: 'Profile',
+    account: 'Account',
+    appearance: 'Appearance',
+    notifications: 'Notifications',
+    display: 'Display',
+    helpCenter: 'Help Center',
+    // UI Header & Common
+    language: 'Language',
+    selectLanguage: 'Select language',
+    search: 'Search...',
+    download: 'Download',
+    overview: 'Overview',
+    analytics: 'Analytics',
+    reports: 'Reports',
+    totalRevenue: 'Total Revenue',
+    subscriptions: 'Subscriptions',
+    sales: 'Sales',
+    activeNow: 'Active Now',
+  },
+  vi: {
+    // Nav groups
+    general: 'Tổng quan',
+    pages: 'Trang',
+    other: 'Khác',
+    // Menu items
+    dashboard: 'Bảng điều khiển',
+    tasks: 'Công việc',
+    chats: 'Trò chuyện',
+    users: 'Người dùng',
+    auth: 'Xác thực',
+    signIn: 'Đăng nhập',
+    signIn2Col: 'Đăng nhập (2 cột)',
+    signUp: 'Đăng ký',
+    forgotPassword: 'Quên mật khẩu',
+    otp: 'Mã OTP',
+    errors: 'Lỗi',
+    unauthorized: 'Chưa xác thực (401)',
+    forbidden: 'Bị cấm truy cập (403)',
+    notFound: 'Không tìm thấy (404)',
+    internalServerError: 'Lỗi máy chủ (500)',
+    maintenanceError: 'Đang bảo trì',
+    settings: 'Cài đặt',
+    profile: 'Hồ sơ',
+    account: 'Tài khoản',
+    appearance: 'Giao diện',
+    notifications: 'Thông báo',
+    display: 'Hiển thị',
+    helpCenter: 'Trung tâm trợ giúp',
+    // UI Header & Common
+    language: 'Ngôn ngữ',
+    selectLanguage: 'Chọn ngôn ngữ',
+    search: 'Tìm kiếm...',
+    download: 'Tải xuống',
+    overview: 'Tổng quan',
+    analytics: 'Phân tích',
+    reports: 'Báo cáo',
+    totalRevenue: 'Tổng doanh thu',
+    subscriptions: 'Gói đăng ký',
+    sales: 'Doanh số',
+    activeNow: 'Đang hoạt động',
+  },
+} as const
+
+export type TranslationKey = keyof typeof translations.ko
