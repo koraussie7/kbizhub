@@ -8,6 +8,8 @@ import { playwright } from '@vitest/browser-playwright'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // kbizhub.com/dashboard 서브패스 서빙을 위한 base.
+  base: '/dashboard/',
   plugins: [
     tanstackRouter({
       target: 'react',
