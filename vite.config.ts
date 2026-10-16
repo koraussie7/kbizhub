@@ -10,6 +10,9 @@ import { playwright } from '@vitest/browser-playwright'
 export default defineConfig({
   // 루트(`/`) 및 서브도메인(`dashboard.kbizhub.com`) 단독 서빙을 위해 `/`로 설정
   base: '/',
+  // 샌드박스 환경에서 node_modules/.vite-temp 쓰기 실패(EPERM) 방지:
+  // Vite 캐시를 프로젝트 루트의 .vite-cache 디렉토리로 우회
+  cacheDir: path.resolve(__dirname, '.vite-cache'),
   plugins: [
     tanstackRouter({
       target: 'react',

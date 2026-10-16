@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { AxiosError } from 'axios'
+import { ApiException } from '@/lib/api-client'
 import {
   QueryCache,
   QueryClient,
@@ -29,6 +30,14 @@ const queryClient = new QueryClient({
         if (failureCount >= 0 && import.meta.env.DEV) return false
         if (failureCount > 3 && import.meta.env.PROD) return false
 
+        // 4xx 는 재시도해도 같은 결과 — ApiException.status 로 판단한다.
+        if (
+          error instanceof ApiException &&
+          error.status >= 400 &&
+          error.status < 500
+        ) {
+          return false
+        }
         return !(
           error instanceof AxiosError &&
           [401, 403].includes(error.response?.status ?? 0)
@@ -40,7 +49,13 @@ const queryClient = new QueryClient({
     mutations: {
       onError: (error) => {
         handleServerError(error)
-
+        if (error instanceof ApiException && [401, 403].includes(error.status)) {
+          toast.error('Session expired!')
+          useAuthStore.getState().auth.reset()
+          const redirect = `${router.history.location.href}`
+          router.navigate({ to: '/sign-in', search: { redirect } })
+          return
+        }
         if (error instanceof AxiosError) {
           if (error.response?.status === 304) {
             toast.error('Content not modified!')
@@ -51,6 +66,13 @@ const queryClient = new QueryClient({
   },
   queryCache: new QueryCache({
     onError: (error) => {
+      if (error instanceof ApiException && [401, 403].includes(error.status)) {
+        toast.error('Session expired!')
+        useAuthStore.getState().auth.reset()
+        const redirect = `${router.history.location.href}`
+        router.navigate({ to: '/sign-in', search: { redirect } })
+        return
+      }
       if (error instanceof AxiosError) {
         if (error.response?.status === 401) {
           toast.error('Session expired!')

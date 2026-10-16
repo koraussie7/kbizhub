@@ -1,0 +1,7 @@
+/assets/*.js /assets/:splat 200
+/assets/*.css /assets/:splat 200
+/assets/*.png /assets/:splat 200
+/assets/*.svg /assets/:splat 200
+/assets/*.woff2 /assets/:splat 200
+/assets/* /404.html 404
+/* /index.html 200
