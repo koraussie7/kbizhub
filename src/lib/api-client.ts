@@ -24,7 +24,11 @@ export class ApiException extends Error {
 // 기본 타임아웃 15초 — Gateway 무응답 시 무한 대기를 막는다.
 const DEFAULT_TIMEOUT_MS = 15_000
 
-const baseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/+$/, '') ?? ''
+const baseUrl =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(
+    /\/+$/,
+    ''
+  ) ?? ''
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const timeoutMs =
@@ -38,9 +42,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       init?.method && init.method !== 'GET'
         ? { 'content-type': 'application/json', ...(init?.headers ?? {}) }
         : init?.headers,
-    ...(timeoutMs
-      ? { signal: AbortSignal.timeout(timeoutMs) }
-      : {}),
+    ...(timeoutMs ? { signal: AbortSignal.timeout(timeoutMs) } : {}),
   })
 
   if (!res.ok) {

@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { AxiosError } from 'axios'
-import { ApiException } from '@/lib/api-client'
 import {
   QueryCache,
   QueryClient,
@@ -10,11 +9,12 @@ import {
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { toast } from 'sonner'
 import { useAuthStore } from '@/stores/auth-store'
+import { ApiException } from '@/lib/api-client'
 import { handleServerError } from '@/lib/handle-server-error'
 import { DirectionProvider } from './context/direction-provider'
 import { FontProvider } from './context/font-provider'
-import { ThemeProvider } from './context/theme-provider'
 import { I18nProvider } from './context/i18n-provider'
+import { ThemeProvider } from './context/theme-provider'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
 // Styles
@@ -49,7 +49,10 @@ const queryClient = new QueryClient({
     mutations: {
       onError: (error) => {
         handleServerError(error)
-        if (error instanceof ApiException && [401, 403].includes(error.status)) {
+        if (
+          error instanceof ApiException &&
+          [401, 403].includes(error.status)
+        ) {
           toast.error('Session expired!')
           useAuthStore.getState().auth.reset()
           const redirect = `${router.history.location.href}`

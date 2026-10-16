@@ -100,7 +100,8 @@ export function ApiKeys() {
           <CardHeader>
             <CardTitle>발급된 키</CardTitle>
             <CardDescription>
-              API 키는 발급 시 한 번만 전체 값이 노출됩니다. 유출 시 즉시 폐기하세요.
+              API 키는 발급 시 한 번만 전체 값이 노출됩니다. 유출 시 즉시
+              폐기하세요.
             </CardDescription>
           </CardHeader>
           <CardContent className='space-y-3'>
@@ -114,7 +115,9 @@ export function ApiKeys() {
                     <span className='font-medium'>{apiKey.name}</span>
                     <Badge variant='outline'>live</Badge>
                   </div>
-                  <code className='text-xs text-muted-foreground'>{apiKey.key}</code>
+                  <code className='text-xs text-muted-foreground'>
+                    {apiKey.key}
+                  </code>
                   <div className='flex flex-wrap items-center gap-2 text-xs text-muted-foreground'>
                     <span>생성: {apiKey.createdAt}</span>
                     <span>·</span>
@@ -122,17 +125,29 @@ export function ApiKeys() {
                   </div>
                   <div className='flex flex-wrap gap-1 pt-1'>
                     {apiKey.scopes.map((scope) => (
-                      <Badge key={scope} variant='secondary' className='text-[10px]'>
+                      <Badge
+                        key={scope}
+                        variant='secondary'
+                        className='text-[10px]'
+                      >
                         {scope}
                       </Badge>
                     ))}
                   </div>
                 </div>
                 <div className='flex gap-2'>
-                  <Button variant='outline' size='sm' onClick={() => handleCopy(apiKey.id)}>
+                  <Button
+                    variant='outline'
+                    size='sm'
+                    onClick={() => handleCopy(apiKey.id)}
+                  >
                     {copiedId === apiKey.id ? '복사됨' : '복사'}
                   </Button>
-                  <Button variant='destructive' size='sm' onClick={() => handleRevoke(apiKey.id)}>
+                  <Button
+                    variant='destructive'
+                    size='sm'
+                    onClick={() => handleRevoke(apiKey.id)}
+                  >
                     폐기
                   </Button>
                 </div>

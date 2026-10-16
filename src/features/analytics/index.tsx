@@ -31,7 +31,9 @@ const fallbackDaily = [
 
 export function Analytics() {
   // API 가 준비되면 VITE_API_BASE_URL 설정 시 서버 데이터를 사용한다.
-  const analyticsQuery = useAnalytics(Boolean(import.meta.env.VITE_API_BASE_URL))
+  const analyticsQuery = useAnalytics(
+    Boolean(import.meta.env.VITE_API_BASE_URL)
+  )
   const stats = analyticsQuery.data?.stats ?? fallbackStats
   const dailyUsage = analyticsQuery.data?.dailyUsage ?? fallbackDaily
   const max = Math.max(...dailyUsage.map((d) => d.alimtalk + d.sms))
@@ -70,7 +72,10 @@ export function Analytics() {
           <CardContent>
             <div className='flex h-56 items-end gap-3'>
               {dailyUsage.map((day) => (
-                <div key={day.date} className='flex flex-1 flex-col items-center gap-1'>
+                <div
+                  key={day.date}
+                  className='flex flex-1 flex-col items-center gap-1'
+                >
                   <div className='flex w-full flex-col justify-end gap-0.5'>
                     <div
                       className='w-full rounded-t bg-primary/80'
@@ -81,8 +86,12 @@ export function Analytics() {
                       style={{ height: `${(day.sms / max) * 160}px` }}
                     />
                   </div>
-                  <span className='text-xs text-muted-foreground'>{day.date}</span>
-                  <span className='text-[10px] font-medium'>{day.alimtalk + day.sms}</span>
+                  <span className='text-xs text-muted-foreground'>
+                    {day.date}
+                  </span>
+                  <span className='text-[10px] font-medium'>
+                    {day.alimtalk + day.sms}
+                  </span>
                 </div>
               ))}
             </div>

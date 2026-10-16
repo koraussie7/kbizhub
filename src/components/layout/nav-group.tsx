@@ -115,7 +115,9 @@ function SidebarMenuCollapsible({
         <CollapsibleContent className='CollapsibleContent'>
           <SidebarMenuSub>
             {item.items.map((subItem) => {
-              const subTitle = subItem.titleKey ? t(subItem.titleKey) : subItem.title
+              const subTitle = subItem.titleKey
+                ? t(subItem.titleKey)
+                : subItem.title
               return (
                 <SidebarMenuSubItem key={subItem.title}>
                   <SidebarMenuSubButton

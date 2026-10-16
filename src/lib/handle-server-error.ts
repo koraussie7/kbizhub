@@ -1,5 +1,4 @@
 import { toast } from 'sonner'
-
 import { ApiException } from '@/lib/api-client'
 
 export function handleServerError(error: unknown) {

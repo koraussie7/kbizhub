@@ -65,7 +65,8 @@ export function useBilling(enabled: boolean) {
 export function useChangePlan() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (planName: string) => api.post('/api/billing/change-plan', { plan: planName }),
+    mutationFn: (planName: string) =>
+      api.post('/api/billing/change-plan', { plan: planName }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['billing'] }),
   })
 }
@@ -83,7 +84,8 @@ export function useApiKeys(enabled: boolean) {
 export function useCreateApiKey() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (name: string) => api.post<{ key: ApiKey }>('/api/keys', { name }),
+    mutationFn: (name: string) =>
+      api.post<{ key: ApiKey }>('/api/keys', { name }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['api-keys'] }),
   })
 }

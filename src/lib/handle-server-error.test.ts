@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { ApiException } from '@/lib/api-client'
 import { handleServerError } from './handle-server-error'
 
