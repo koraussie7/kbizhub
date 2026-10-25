@@ -29,6 +29,9 @@ export default defineConfig({
   test: {
     silent: 'passed-only',
     unstubEnvs: true,
+    // sendgo-mcp 는 Node 전용 MCP 서버 — 브라우저 vitest 대상에서 제외한다.
+    // (node --test test/smoke.test.mjs 로 별도 실행)
+    exclude: ['sendgo-mcp/**', '**/node_modules/**', '**/dist/**'],
     browser: {
       enabled: true,
       provider: playwright(),

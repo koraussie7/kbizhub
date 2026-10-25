@@ -7,7 +7,8 @@ import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig(
-  { ignores: ['dist', 'src/components/ui'] },
+  // _stray/ 은 참고용으로 보존한 외부 코드(privseai.com) — 앱 빌드 대상이 아니다
+  { ignores: ['dist', 'src/components/ui', '_stray'] },
   {
     extends: [
       js.configs.recommended,
