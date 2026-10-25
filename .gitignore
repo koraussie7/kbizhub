@@ -1,21 +1,47 @@
-# 도구/에이전트 산출물
-.agent-cache/
-.http-forge/
-.vscode/
-
-# Node
-node_modules/
+# ── Logs ──────────────────────────────────────────────────
+logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# 환경 (예시는 유지)
+# ── Node ──────────────────────────────────────────────────
+node_modules
+node_modules/
+dist
+dist-ssr
+*.local
+
+# ── 환경 (예시는 유지) ─────────────────────────────────────
 .env
 .env.*
 !.env.example
 
-# OS
-.DS_Store
+# ── 도구/에이전트 산출물 ───────────────────────────────────
+.agent-cache/
+.http-forge/
+.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
 
-# 임시
+# ── OS ────────────────────────────────────────────────────
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Test coverage ─────────────────────────────────────────
+/coverage
+# Vitest artifacts (browser screenshots/attachments)
+**/__screenshots__/
+.vitest-attachments/
+
+# ── 임시 ──────────────────────────────────────────────────
 *.tmp
 z-*.txt
